@@ -12,3 +12,4 @@ persist_with: ca_daily_default_datagroup
 explore: ca_facebooke_ads {}
 explore: ca_channel {}
 explore: ca_exchange_rate {}
+explore: ca_google_session {}
