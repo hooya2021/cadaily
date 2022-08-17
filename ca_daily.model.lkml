@@ -13,3 +13,4 @@ explore: ca_facebooke_ads {}
 explore: ca_channel {}
 explore: ca_exchange_rate {}
 explore: ca_google_session {}
+explore: ca_google_ads_cost {}
