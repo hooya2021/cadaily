@@ -8,6 +8,7 @@ view: ca_channel {
       conversions as Conversions,
       revenueuds as RevenueUSD,
       costusd as CostUSD,
+      null as real_revenue,
       "ShareASale Affiliate" as Channel
       from `alidbtogcp.google_sheet_ca.ca_shareasale_affiliate`
 
@@ -20,8 +21,22 @@ view: ca_channel {
       conversions as Conversions,
       revenueusd as RevenueUSD,
       costusd as CostUSD,
+      null as real_revenue,
       "Bing/CPC" as Channel
       from `alidbtogcp.google_sheet_ca.ca_bing_cpc`
+
+      union all
+      select weekday as Weekday,
+      cast(date as timestamp) as Date,
+      null as Impression,
+      null as Clicks,
+      null as BounceRate,
+      conversions as Conversions,
+      revenue as RevenueUSD,
+      cost as CostUSD,
+      real_revenue as real_revenue,
+      "Impact" as Channel
+      from `alidbtogcp.google_sheet_ca.Impact_CA`
        ;;
   }
 
@@ -70,6 +85,11 @@ view: ca_channel {
   dimension: revenue_usd {
     type: number
     sql: ${TABLE}.RevenueUSD ;;
+  }
+
+  dimension: real_revenue {
+    type: number
+    sql: ${TABLE}.real_revenue ;;
   }
 
   dimension: cost_usd {
